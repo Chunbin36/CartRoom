@@ -16,6 +16,12 @@
 
 * { box-sizing: border-box; }
 
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -25,6 +31,8 @@ body {
   display: grid;
   place-items: center;
   padding: 16px;
+  touch-action: pan-y;
+  overscroll-behavior-x: none;
 }
 
 .app {
@@ -34,6 +42,7 @@ body {
   border-radius: 16px;
   box-shadow: 0 6px 18px rgba(17, 24, 39, 0.06);
   padding: 16px;
+  overflow-x: clip;
 }
 
 .screen {
@@ -43,6 +52,7 @@ body {
 .screen.active {
   display: grid;
   gap: 16px;
+  min-width: 0;
 }
 
 .is-hidden { display: none !important; }
@@ -71,6 +81,7 @@ h2 {
   font-size: 12px;
   color: var(--color-text-secondary);
   line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
 .app-mini-logo {
@@ -111,6 +122,7 @@ h2 {
   display: flex;
   align-items: center;
   gap: 8px;
+  min-width: 0;
 }
 
 .row input {
@@ -124,6 +136,10 @@ h2 {
   color: var(--color-text-primary);
   font-size: 14px;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.row button {
+  flex-shrink: 0;
 }
 
 .row input:focus {
@@ -207,6 +223,7 @@ button:active { transform: translateY(0); }
 .item-main {
   display: grid;
   gap: 4px;
+  min-width: 0;
 }
 
 .item-name {
@@ -214,6 +231,8 @@ button:active { transform: translateY(0); }
   font-size: 14px;
   font-weight: 600;
   color: var(--color-text-primary);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .item.checked .item-name {
@@ -370,6 +389,10 @@ button:active { transform: translateY(0); }
   #item-form button {
     width: auto;
     white-space: nowrap;
+  }
+
+  #room-screen .row:not(#item-form) button {
+    width: 100%;
   }
 }
 
