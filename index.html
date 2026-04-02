@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>오늘의 장보기</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <section id="nickname-screen" class="screen active nickname-layout">
+      <p class="app-mini-logo">🛒</p>
+      <h1>다같이 장보기</h1>
+      <p class="subtitle">함께 만드는 우리 가족 장보기 리스트</p>
+      <form id="nickname-form" class="row">
+        <input id="nickname-input" type="text" maxlength="20" placeholder="닉네임을 입력하세요">
+        <button type="submit">시작하기</button>
+      </form>
+    </section>
+
+    <section id="lobby-screen" class="screen">
+      <div class="top-bar">
+        <p class="app-mini-logo">🛒</p>
+        <h1 class="section-title">다같이 장보기</h1>
+      </div>
+      <p id="welcome-message" class="hint"></p>
+      <p id="lobby-status" class="hint"></p>
+
+      <div class="card">
+        <h2>새 룸 만들기</h2>
+        <form id="create-room-form" class="row">
+          <input id="room-name-input" type="text" maxlength="40" placeholder="룸 이름">
+          <button type="submit" class="secondary-action">생성</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>코드로 입장</h2>
+        <form id="join-room-form" class="row">
+          <input id="join-code-input" type="text" maxlength="5" placeholder="초대 코드">
+          <button type="submit">입장하기</button>
+        </form>
+        <p class="hint">코드는 최대 5자 (영문 대/소문자 + 숫자)</p>
+      </div>
+    </section>
+
+    <section id="room-screen" class="screen">
+      <div class="top-bar room-head">
+        <button id="back-to-lobby-btn" class="icon-btn" type="button" aria-label="로비로 이동">‹</button>
+        <h1 id="room-title">룸</h1>
+      </div>
+      <p id="room-participant-count" class="hint">오늘의 장보기에 참여 중: 0명</p>
+      <p id="room-code-label" class="hint"></p>
+      <p id="room-nickname" class="hint"></p>
+      <div class="row">
+        <button id="edit-room-name-btn" type="button" class="ghost-btn">룸 이름 수정</button>
+      </div>
+      <form id="item-form" class="row">
+        <input
+          id="item-input"
+          type="text"
+          placeholder="장볼 물건을 입력하세요"
+          autocomplete="off"
+          maxlength="80"
+        >
+        <button type="submit">추가</button>
+      </form>
+      <ul id="item-list" class="item-list"></ul>
+      <button id="complete-shopping-btn" type="button" class="complete-btn is-hidden">장보기 완료</button>
+    </section>
+
+    <section id="complete-screen" class="screen complete-layout">
+      <h1>장보기 완료!</h1>
+      <p class="hint">오늘의 장보기를 모두 끝냈어요. 축하합니다!</p>
+      <p id="complete-countdown" class="hint">5초 후 자동으로 처음 화면으로 이동합니다.</p>
+      <div class="confetti" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <button id="reset-to-start-btn" type="button" class="complete-btn">처음으로</button>
+    </section>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
